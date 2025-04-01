@@ -2,6 +2,7 @@ pipeline {
     agent { label "Jenkins-Agent" }
     environment {
               APP_NAME = "mongo-crud-pipeline"
+              IMAGE_TAG = "test"
     }
 
     stages {
