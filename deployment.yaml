@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: register-app-deployment
+  name: mongo-crud-deployment
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: register-app
+      app: mongo-app
   template:
     metadata:
       labels:
-        app: register-app
+        app: mongo-app
     spec:
       containers:
         - name: register-app
-          image: ashfaque9x/register-app-pipeline:1.0.0-9
+          image: merict/mongo-crud-pipeline:1.0.0-13
           resources:
             limits:
               memory: "256Mi"
