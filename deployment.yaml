@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: register-crud
-          image: merict/mongo-crud-pipeline:1.0.0-13
+          image: merict/mongo-crud-pipeline:1.0.0-14
           resources:
             limits:
               memory: "512Mi"
