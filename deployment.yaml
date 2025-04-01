@@ -17,7 +17,7 @@ spec:
           image: merict/mongo-crud-pipeline:1.0.0-13
           resources:
             limits:
-              memory: "256Mi"
+              memory: "512Mi"
               cpu: "500m"
           ports:
             - containerPort: 8080
