@@ -18,7 +18,7 @@ spec:
       - name: register-crud
         image: merict/mongo-crud-pipeline:1.0.0-13
         ports:
-        - containerPort: 8080
+        - containerPort: 3310
         env:
         - name: NODE_ENV
           value: "development"
@@ -34,12 +34,12 @@ spec:
         livenessProbe:
           httpGet:
             path: /health
-            port: 8080
+            port: 3310
           initialDelaySeconds: 30
           periodSeconds: 10
         readinessProbe:
           httpGet:
             path: /health
-            port: 8080
+            port: 3310
           initialDelaySeconds: 5
           periodSeconds: 5
