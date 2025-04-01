@@ -1,45 +1,15 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Service
 metadata:
-  name: mongo-crud-deployment
+  name: mongo-crud-service
+  labels:
+    app: mongo-crud 
 spec:
-  replicas: 1  # Önce 1 replica ile başlayın
-  strategy:
-    type: Recreate
   selector:
-    matchLabels:
-      app: mongo-crud
-  template:
-    metadata:
-      labels:
-        app: mongo-crud
-    spec:
-      containers:
-      - name: register-crud
-        image: merict/mongo-crud-pipeline:1.0.0-13
-        ports:
-        - containerPort: 3310
-        env:
-        - name: NODE_ENV
-          value: "development"
-        - name: MONGO_URI
-          value: "mongodb://mongo-service:27017/yourdb"
-        resources:
-          requests:
-            cpu: "100m"
-            memory: "128Mi"
-          limits:
-            cpu: "500m"
-            memory: "512Mi"
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 3310
-          initialDelaySeconds: 30
-          periodSeconds: 10
-        readinessProbe:
-          httpGet:
-            path: /health
-            port: 3310
-          initialDelaySeconds: 5
-          periodSeconds: 5
+    app: mongo-crud
+
+  ports:
+    - port: 3310
+      targetPort: 3310
+
+  type: LoadBalancer
